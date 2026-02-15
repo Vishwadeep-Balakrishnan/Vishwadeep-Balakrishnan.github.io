@@ -1,0 +1,44 @@
+---
+layout: base
+---
+<article class="list">
+  <header class="list-header">
+    <h1 class="list-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="list-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="list-items">
+    {% assign col = site[page.collection] | sort: "date" | reverse %}
+    {% for item in col %}
+      <article class="card">
+        <div class="card-top">
+          <h2 class="card-title">
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          </h2>
+
+          {% if item.date %}
+            <time class="card-date" datetime="{{ item.date | date_to_xmlschema }}">
+              {{ item.date | date: "%b %-d, %Y" }}
+            </time>
+          {% endif %}
+        </div>
+
+        {% if item.tagline %}
+          <p class="card-tagline">{{ item.tagline }}</p>
+        {% endif %}
+
+        {% if item.excerpt %}
+          <div class="card-excerpt prose">
+            {{ item.excerpt }}
+          </div>
+        {% endif %}
+
+        <div class="card-actions">
+          <a class="pill pill-quiet" href="{{ item.url | relative_url }}">Read →</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</article>
