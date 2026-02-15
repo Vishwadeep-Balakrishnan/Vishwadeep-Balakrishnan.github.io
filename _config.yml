@@ -1,0 +1,37 @@
+title: Vishwadeep
+description: ""
+url: ""
+baseurl: ""
+
+markdown: kramdown
+
+# Use <!--more--> to control excerpts on list pages
+excerpt_separator: "<!--more-->"
+
+permalink: /:categories/:title/
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:title/
+  projects:
+    output: true
+    permalink: /projects/:title/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: essays
+    values:
+      layout: post
+      section: Essays
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: post
+      section: Projects
