@@ -1,0 +1,15 @@
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="social">
+      {% for s in site.data.social %}
+        <a class="pill pill-social" href="{{ s.url }}" target="_blank" rel="noopener">
+          {{ s.title }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="footer-meta">
+      <span>© {{ "now" | date: "%Y" }} {{ site.title }}</span>
+    </div>
+  </div>
+</footer>
