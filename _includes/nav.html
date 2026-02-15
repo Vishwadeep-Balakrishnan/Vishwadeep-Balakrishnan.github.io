@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="container nav-row">
+    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+
+    <nav class="nav-right" aria-label="Primary">
+      <div class="nav-links">
+        {% for item in site.data.nav %}
+          {% assign current = false %}
+          {% if page.url == item.url or page.url == item.url | append: "/" %}
+            {% assign current = true %}
+          {% endif %}
+
+          <a
+            class="pill {% if current %}pill-active{% else %}pill-quiet{% endif %}"
+            href="{{ item.url | relative_url }}"
+            {% if current %}aria-current="page"{% endif %}
+          >
+            {{ item.title }}
+          </a>
+        {% endfor %}
+      </div>
+
+      <button class="pill pill-quiet theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+        <span class="theme-toggle-text" data-theme-label>Theme</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="nav-divider" role="presentation"></div>
+</header>
